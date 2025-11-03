@@ -1,0 +1,14 @@
+@GetMapping("/students")
+    @Timed(value = "students.list.time", description = "Time to list all students")
+    public List<Student> getStudents() {
+        logger.info("Fetching all students...");
+        return new ArrayList<>(students.values());
+    }
+
+    @PostMapping("/students")
+    @Timed(value = "students.add.time", description = "Time to add student")
+    public String addStudent(@RequestBody Student s) {
+        students.put(s.getId(), s);
+        logger.info("New Student Added: {}", s.getName());
+        return "✅ Student Added Successfully!";
+    }

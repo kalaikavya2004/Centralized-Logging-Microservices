@@ -1,0 +1,13 @@
+   @GetMapping("/faculty")
+    @Timed(value = "faculty.list.time", description = "Time to list all faculty")
+    public List<Faculty> getFaculty() {
+        logger.info("Retrieving faculty list...");
+        return new ArrayList<>(faculties.values());
+    }
+
+    @PostMapping("/faculty")
+    public String addFaculty(@RequestBody Faculty f) {
+        faculties.put(f.getId(), f);
+        logger.info("New Faculty Added: {}", f.getName());
+        return "✅ Faculty Added Successfully!";
+    }

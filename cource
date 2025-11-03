@@ -1,0 +1,5 @@
+  @GetMapping("/course/status")
+    public String checkCourseStatus() {
+        logger.debug("Checking Course Service health...");
+        return "🟢 Course Service Running Fine!";
+    }

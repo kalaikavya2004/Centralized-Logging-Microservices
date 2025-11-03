@@ -1,0 +1,10 @@
+  @GetMapping("/simulate/error")
+    public String simulateError() {
+        try {
+            int x = 10 / 0; // Intentional error
+        } catch (Exception e) {
+            logger.error("❌ Exception Occurred: {}", e.getMessage());
+        }
+        return "Error Logged Successfully to ELK Stack";
+    }
+}
